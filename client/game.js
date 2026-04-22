@@ -186,6 +186,14 @@ document.getElementById('playAgainBtn').addEventListener('click', () => {
   location.reload(); // Simple: just refresh the page
 });
 
+document.getElementById('resignBtn').addEventListener('click', () => {
+  const confirmed = confirm('Are you sure you want to resign?');
+  if (confirmed) {
+    sendGameOver(roomId, 'resign');
+    showOverlay('lose', 'You resigned!');
+  }
+});
+
 // ── CHECK FOR ROOM ID IN URL ───────────────
 // If someone opens the invite link, auto-fill the room ID
 window.addEventListener('load', () => {

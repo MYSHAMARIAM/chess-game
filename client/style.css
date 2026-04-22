@@ -641,6 +641,25 @@ input:focus {
           drop-shadow(0 0 6px rgba(150,50,255,0.6));
 }
 
+.btn-resign {
+  margin-top: 12px;
+  width: auto;
+  padding: 8px 24px;
+  background: transparent;
+  border: 1px solid #ff4444;
+  color: #ff4444;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+.btn-resign:hover {
+  background: #ff4444;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255,68,68,0.4);
+}
+
 /* ── SCROLLBAR ────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }

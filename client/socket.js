@@ -54,7 +54,9 @@ socket.on('opponentMove', ({ move, fen }) => {
 
 // Game over signal from opponent
 socket.on('gameOver', (result) => {
-  console.log('Game over:', result);
+  if (result === 'resign') {
+    showOverlay('win', 'Opponent resigned! You win! 🏆');
+  }
 });
 
 // Opponent disconnected
