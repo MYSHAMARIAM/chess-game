@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>♟️ Chess Online</title>
+
+  <!-- Chess board UI library -->
+  <link rel="stylesheet"
+    href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"/>
+
+  <!-- Your custom styles -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ── SCREEN 1: HOME ──────────────────────────── -->
+  <div id="homeScreen" class="screen active">
+    <div class="home-card">
+      <h1>♟️ Chess Online</h1>
+      <p>Play chess with a friend in real time</p>
+
+      <button id="createBtn" class="btn btn-primary">Create Game</button>
+      <div class="divider">OR</div>
+      <input id="joinInput" type="text" placeholder="Enter Room ID" />
+      <button id="joinBtn" class="btn btn-secondary">Join Game</button>
+
+      <!-- Invite link shown after room creation -->
+      <div id="inviteBox" class="hidden">
+        <p>Share this link with your friend:</p>
+        <div class="invite-link-row">
+          <input id="inviteLink" type="text" readonly />
+          <button id="copyBtn">Copy</button>
+        </div>
+        <p class="waiting-text">⏳ Waiting for opponent...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCREEN 2: GAME ──────────────────────────── -->
+  <div id="gameScreen" class="screen hidden">
+
+    <!-- Theme selector -->
+    <div class="theme-bar">
+      <span>Theme:</span>
+      <button class="theme-btn" data-theme="classic">Classic</button>
+      <button class="theme-btn" data-theme="dark">Dark</button>
+      <button class="theme-btn" data-theme="forest">Forest</button>
+      <button class="theme-btn" data-theme="ocean">Ocean</button>
+    </div>
+
+    <div class="game-layout">
+
+      <!-- Left: Chess Board -->
+      <div class="board-section">
+        <div id="playerInfo" class="player-info">
+          You are playing as: <span id="playerColor">White</span>
+        </div>
+        <div id="board" class="chess-board"></div>
+        <div id="statusMsg" class="status-msg">Game in progress...</div>
+      </div>
+
+      <!-- Right: Chat -->
+      <div class="chat-section">
+        <h3>💬 Chat</h3>
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="chat-input-row">
+          <input id="chatInput" type="text" placeholder="Say something..." />
+          <button id="sendBtn">Send</button>
+        </div>
+      </div>
+      <!-- Move History -->
+      <div class="move-history">
+       <h3>📜 MOVES</h3>
+       <div id="moveList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OVERLAY: WIN / LOSE / DRAW ─────────────── -->
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <div id="overlayEmoji" class="overlay-emoji">🏆</div>
+      <h2 id="overlayTitle">You Win!</h2>
+      <p id="overlayMessage">Checkmate! Well played.</p>
+      <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
+    </div>
+  </div>
+
+  <!-- Libraries -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+  <!-- Your scripts -->
+  <script src="animations.js"></script>
+  <script src="chat.js"></script>
+  <script src="socket.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
